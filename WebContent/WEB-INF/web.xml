@@ -11,23 +11,23 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>AServlet</display-name>
-    <servlet-name>AServlet</servlet-name>
-    <servlet-class>com.wuzizhong.test.Servlet.AServlet</servlet-class>
+    <display-name>LoginController</display-name>
+    <servlet-name>LoginController</servlet-name>
+    <servlet-class>com.wuzizhong.test.Servlet.LoginController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AServlet</servlet-name>
-    <url-pattern>/AServlet</url-pattern>
+    <servlet-name>LoginController</servlet-name>
+    <url-pattern>/LoginController</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>BServlet</display-name>
-    <servlet-name>BServlet</servlet-name>
-    <servlet-class>com.wuzizhong.test.Servlet.BServlet</servlet-class>
+    <display-name>RegisterController</display-name>
+    <servlet-name>RegisterController</servlet-name>
+    <servlet-class>com.wuzizhong.test.Servlet.RegisterController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>BServlet</servlet-name>
-    <url-pattern>/BServlet</url-pattern>
+    <servlet-name>RegisterController</servlet-name>
+    <url-pattern>/RegisterController</url-pattern>
   </servlet-mapping>
   <listener>
     <listener-class>com.wuzizhong.test.listener.Listener</listener-class>
@@ -43,11 +43,11 @@
     <dispatcher>REQUEST</dispatcher>
     <!-- <dispatcher>FORWARD</dispatcher> -->
   </filter-mapping>
- <resource-ref>
+ <!-- <resource-ref>
       <description>MySQL DB Connection</description>
       <res-ref-name>mysqlDataSource</res-ref-name>
       <res-type>javax.sql.DataSource</res-type>
       <res-auth>Container</res-auth>
-  </resource-ref>
+  </resource-ref> -->
   
 </web-app>

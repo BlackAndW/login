@@ -13,7 +13,7 @@
 <p class="info">请输入登录信息</p>
 <p class="warning">${msg }</p>
 <div class="form">
-	<form id="form" action="AServlet" method="post">
+	<form id="form" action="LoginController" method="post">
 	<div class="form-group">
 		<table id="register">
 			<tr>

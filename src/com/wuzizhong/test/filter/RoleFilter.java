@@ -29,11 +29,15 @@ public class RoleFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) servletResponse;
 		@SuppressWarnings("unchecked")
 		Map<String, Object> map = (Map<String, Object>) request.getSession().getAttribute("UserInfo");
-		String role = (String)map.get("Role");
-		if (role.equals("user")) {
-			filterChain.doFilter(request, response);
-		} else if (role.equals("admin")) {
-			request.getRequestDispatcher("/Page/AdminPage.jsp").forward(request, response);
+		if(map != null) {
+			String role = (String)map.get("Role");
+			if (role.equals("user")) {
+				filterChain.doFilter(request, response);
+			} else if (role.equals("admin")) {
+				request.getRequestDispatcher("/Page/AdminPage.jsp").forward(request, response);
+			}
+		}else {
+			response.sendRedirect("../login.jsp");
 		}
 	}
 

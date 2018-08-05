@@ -19,7 +19,12 @@ public class AppListenser implements ServletContextListener {
     }
     
     public void contextDestroyed(ServletContextEvent arg0)  { 
-         System.out.println("lala");
+         try {
+			db.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+         System.out.println("πÿ±’¡¨Ω”");
     }
 
     public void contextInitialized(ServletContextEvent arg0)  {

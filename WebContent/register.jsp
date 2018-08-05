@@ -15,7 +15,7 @@
 	<p class="info">请输入注册信息</p>
 	<p class="warning">${msg }</p>
 <div class="form">
-	<form id="form" action="BServlet" method="post">
+	<form id="form" action="RegisterController" method="post">
 	<div class="form-group">
 		<table id="register">
 			<tr>

@@ -16,7 +16,7 @@ public class LoginDaoImpl implements LoginDao {
 	private UserInfo userInfo = new UserInfo();
 	
 	public void getUserInfo(User user) throws SQLException {
-		dbUtil.getConn();
+//		dbUtil.getConn();
 		Object[] obj = new Object[1];
 		List<String> userInfoList = new ArrayList<>();
 		obj[0] = user.getUsername();
@@ -27,12 +27,11 @@ public class LoginDaoImpl implements LoginDao {
 				userInfoList.add(rs.getString(i));
 			}
 			userInfo.setUserInfos(userInfoList);
-			dbUtil.close();
 		}else {
 			userInfoList.add("noUser");
 			userInfo.setUserInfos(userInfoList);
 		}
-		dbUtil.close();
+//		dbUtil.close();
 //		return userInfo;
 		
 	}

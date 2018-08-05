@@ -2,58 +2,28 @@ package com.wuzizhong.test.Util;
 
 import java.sql.*;
 
+import javax.sql.DataSource;
+
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+
 public class DBUtil {
-    private String url;
-    private String user;
-    private String password;
-    private Connection conn = null;
+	private static ComboPooledDataSource dataSource = new ComboPooledDataSource();
+    private static Connection conn = null;
     private PreparedStatement ps=null;
     private ResultSet rs=null;
+    
     //加载驱动并且建立连接
-    public void getConn(){
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("驱动加载成功");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("驱动加载失败");
-        }
-
-        try {
-        	url="jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&useSSL=false";
-        	//链接的mysql
-            user="root";
-            password="123456";
-            conn=DriverManager.getConnection(url, user, password);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public Connection getConn() throws SQLException{
+    	conn = dataSource.getConnection();
+        return conn;
+    }
+    public static DataSource getDatasource() {
+    	return dataSource;
     }
     
     //释放资源
-    public void close(){
-        if(rs!=null){
-            try {
-                rs.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        if(ps!=null){
-            try {
-                ps.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        if(conn!=null){
-            try {
-                conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
+    public void close() throws SQLException{
+    	conn.close();
     }
 
     //查询的方法 
@@ -108,7 +78,7 @@ public class DBUtil {
 
 
     //修改的方法
-    public int update(String sql,Object[]obj){
+    public int update(String sql,Object[]obj) throws SQLException{
         this.getConn();
         try {
             ps=conn.prepareStatement(sql);

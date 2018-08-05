@@ -7,11 +7,12 @@ import com.wuzizhong.test.Util.DBUtil;
 import com.wuzizhong.test.dao.RegisterDao;
 
 public class RegisterDaoImpl implements RegisterDao{
-	int state = 0;
+	
 	
 	public int addUser(String username,String password) throws SQLException {
+		int state = 0;
 		DBUtil dbUtil = new DBUtil();
-		dbUtil.getConn();
+//		dbUtil.getConn();
 		Object[] obj = new Object[2];
 		obj[0] = username;
 		obj[1] = password;
@@ -32,7 +33,7 @@ public class RegisterDaoImpl implements RegisterDao{
 		
 //		未被注册则向数据库添加新用户
 		String sql = "insert into userinfo values(?,?,'user')";
-		int state = dbUtil.update(sql, obj);
+		dbUtil.update(sql, obj);
 		return state;
 	}
 }

@@ -28,7 +28,10 @@ public class RegisterController extends HttpServlet {
 		int state = registerService.checkResult(user);
 		
 		if (state == 0) {
-			resp.sendRedirect("login.jsp");
+			resp.setContentType("text/html;charset=GBK");
+			resp.getWriter().print("<script>alert('注册成功，即将跳转到登录页面')</script>");
+			resp.setHeader("refresh", "0;url=login.jsp");
+//			resp.sendRedirect("login.jsp");
 		}else if (state == 1) {
 			String msg = "用户名已被注册";
 			req.setAttribute("msg", msg);

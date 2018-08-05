@@ -8,7 +8,7 @@ import com.wuzizhong.test.entity.User;
 
 public class RegisterServiceImpl implements RegisterService {
 	private RegisterDao registerDao = new RegisterDaoImpl();
-	int state = 0;
+	private int state;
 	
 //	判断用户名和密码是否为空，返回状态值和错误信息
 	@Override
